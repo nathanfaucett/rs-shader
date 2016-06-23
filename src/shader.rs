@@ -25,9 +25,9 @@ impl Shader {
     }
 
     pub fn vertex(&self) -> String {
-        self.data.borrow().vertex
+        self.data.borrow().vertex.clone()
     }
     pub fn fragment(&self) -> String {
-        self.data.borrow().fragment
+        self.data.borrow().fragment.clone()
     }
 }
