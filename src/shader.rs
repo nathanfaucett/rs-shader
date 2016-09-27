@@ -1,5 +1,5 @@
 use collections::string::String;
-use alloc::arc::Arc;
+use alloc::rc::Rc;
 use core::cell::RefCell;
 
 
@@ -10,14 +10,14 @@ pub struct ShaderData {
 
 #[derive(Clone)]
 pub struct Shader {
-    data: Arc<RefCell<ShaderData>>,
+    data: Rc<RefCell<ShaderData>>,
 }
 
 impl Shader {
 
     pub fn new(vertex: String, fragment: String) -> Self {
         Shader {
-            data: Arc::new(RefCell::new(ShaderData {
+            data: Rc::new(RefCell::new(ShaderData {
                 vertex: vertex,
                 fragment: fragment,
             }))
