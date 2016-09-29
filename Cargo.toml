@@ -9,3 +9,6 @@ license = "MIT"
 readme = "README.md"
 repository = "https://github.com/nathanfaucett/rs-shader.git"
 homepage = "https://github.com/nathanfaucett/rs-shader"
+
+[dependencies.shared]
+git = "https://github.com/nathanfaucett/rs-shared.git"

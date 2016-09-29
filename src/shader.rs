@@ -1,6 +1,5 @@
 use collections::string::String;
-use alloc::rc::Rc;
-use core::cell::RefCell;
+use shared::Shared;
 
 
 pub struct ShaderData {
@@ -10,24 +9,24 @@ pub struct ShaderData {
 
 #[derive(Clone)]
 pub struct Shader {
-    data: Rc<RefCell<ShaderData>>,
+    data: Shared<ShaderData>,
 }
 
 impl Shader {
 
-    pub fn new(vertex: String, fragment: String) -> Self {
+    pub fn new(vertex: &str, fragment: &str) -> Self {
         Shader {
-            data: Rc::new(RefCell::new(ShaderData {
-                vertex: vertex,
-                fragment: fragment,
-            }))
+            data: Shared::new(ShaderData {
+                vertex: String::from(vertex),
+                fragment: String::from(fragment),
+            })
         }
     }
 
-    pub fn vertex(&self) -> String {
-        self.data.borrow().vertex.clone()
+    pub fn vertex(&self) -> &str {
+        &self.data.vertex
     }
-    pub fn fragment(&self) -> String {
-        self.data.borrow().fragment.clone()
+    pub fn fragment(&self) -> &str {
+        &self.data.fragment
     }
 }
