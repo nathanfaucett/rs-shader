@@ -2,8 +2,9 @@
 #![no_std]
 
 
-extern crate shared;
 extern crate collections;
+
+extern crate shared;
 
 
 mod shader;
