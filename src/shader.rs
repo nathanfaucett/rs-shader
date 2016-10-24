@@ -5,7 +5,7 @@ use core::hash::{Hash, Hasher};
 use shared::Shared;
 
 
-#[derive(Hash)]
+#[derive(Hash, Debug, PartialEq, Eq)]
 pub struct ShaderData {
     vertex: String,
     fragment: String,
@@ -41,3 +41,10 @@ impl Hash for Shader {
          self.data.hash(state);
     }
 }
+
+impl PartialEq<Shader> for Shader {
+    fn eq(&self, other: &Shader) -> bool {
+        self.data.eq(&*other.data)
+    }
+}
+impl Eq for Shader {}
