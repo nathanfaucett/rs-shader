@@ -1,8 +1,11 @@
 use collections::string::String;
 
+use core::hash::{Hash, Hasher};
+
 use shared::Shared;
 
 
+#[derive(Hash)]
 pub struct ShaderData {
     vertex: String,
     fragment: String,
@@ -29,5 +32,12 @@ impl Shader {
     }
     pub fn fragment(&self) -> &str {
         &self.data.fragment
+    }
+}
+
+impl Hash for Shader {
+    #[inline]
+    fn hash<H: Hasher>(&self, state: &mut H) {
+         self.data.hash(state);
     }
 }
