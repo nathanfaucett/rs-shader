@@ -12,3 +12,7 @@ homepage = "https://github.com/nathanfaucett/rs-shader"
 
 [dependencies.shared]
 git = "https://github.com/nathanfaucett/rs-shared.git"
+
+[dependencies.uuid]
+version = "0.2"
+features = ["v4"]
